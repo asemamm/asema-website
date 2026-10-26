@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My World | Личный сайт</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    background: #080810;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    line-height: 1.7;
+}
+
+:root {
+    --purple: #a855f7;
+    --pink: #e879f9;
+    --card: #131320;
+    --text: #aaa6bd;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #080810eF;
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid #292039;
+}
+
+nav {
+    max-width: 1050px;
+    margin: auto;
+    padding: 18px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--purple);
+}
+
+nav div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+nav div a {
+    color: var(--text);
+    font-size: 13px;
+}
+
+a:hover { color: var(--pink); }
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.hero h1 {
+    font-size: clamp(45px, 8vw, 80px);
+    line-height: 1.2;
+    margin: 15px 0;
+}
+
+.gradient {
+    background: linear-gradient(90deg, #e879f9, #818cf8);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p, .description {
+    color: var(--text);
+}
+
+.hero p { max-width: 550px; }
+
+.button {
+    display: inline-block;
+    margin: 25px 10px 0 0;
+    padding: 11px 22px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #9333ea, #6366f1);
+    transition: .3s;
+}
+
+.button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 25px #a855f755;
+}
+
+.outline {
+    background: transparent;
+    border: 1px solid var(--purple);
+}
+
+section { padding: 80px 0; }
+
+.label {
+    color: var(--pink);
+    letter-spacing: 3px;
+    font-size: 12px;
+}
+
+h2 {
+    font-size: clamp(28px, 5vw, 40px);
+    margin: 10px 0 25px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    padding: 25px;
+    background: var(--card);
+    border: 1px solid #302344;
+    border-radius: 16px;
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    border-color: var(--purple);
+    box-shadow: 0 10px 30px #a855f718;
+}
+
+.card h3 { margin-bottom: 10px; }
+
+.card p, .about p {
+    color: var(--text);
+}
+
+.icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.about {
+    padding: 30px;
+    background: var(--card);
+    border: 1px solid #302344;
+    border-radius: 18px;
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.skills span {
+    padding: 10px 18px;
+    background: var(--card);
+    border: 1px solid #302344;
+    border-radius: 10px;
+    color: #d8b4fe;
+}
+
+.project-icon {
+    font-size: 45px;
+    margin-bottom: 12px;
+}
+
+.contacts {
+    text-align: center;
+    padding: 40px 20px;
+    background: var(--card);
+    border: 1px solid #302344;
+    border-radius: 20px;
+}
+
+footer {
+    padding: 25px;
+    text-align: center;
+    color: var(--text);
+    border-top: 1px solid #292039;
+    font-size: 13px;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: .7s;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 700px) {
+    nav {
+        flex-direction: column;
+    }
+
+    nav div {
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    section { padding: 60px 0; }
+
+    .hero { min-height: 75vh; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <a href="#home" class="logo">♡</a>
+        <div>
+            <a href="#about">Обо мне</a>
+            <a href="#interests">Интересы</a>
+            <a href="#contacts">Контакты</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+
+<!-- ГЛАВНАЯ -->
+
+<section class="hero" id="home">
+    <div class="container reveal">
+        <p class="label">WELCOME TO MY WORLD ♡</p>
+
+        <h1>Привет, я<br><span class="gradient">Асема</span></h1>
+
+        <p>Создаю свою историю, мечтаю о большем и наслаждаюсь маленькими моментами жизни.</p>
+
+        <a href="#about" class="button">Обо мне ✦</a>
+        <a href="#interests" class="button outline">Мои интересы ♡</a>
+    </div>
+</section>
+
+<!-- ОБО МНЕ -->
+
+<section id="about">
+    <div class="container reveal">
+        <p class="label">01 — ABOUT ME</p>
+        <h2>Немного <span class="gradient">обо мне</span></h2>
+
+        <div class="about">
+            <p>Привет! Меня зовут Асема, я родом из уютного города Кара-Куль.</p>
+            <p>Сейчас я совмещаю учебу на втором курсе КНУ им. Ж. Баласагына (направление «Прикладная математика и информатика») с работой в детском магазине «Мамонтенок».</p>
+            <p>Мне искренне нравится познавать мир IT, развиваться и открывать для себя что-то новое. Я верю, что каждый день — это маленький шаг навстречу большим мечтам. А баланс и вдохновение я нахожу в музыке, любимых фильмах и просто уютных моментах, из которых складывается жизнь.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ИНТЕРЕСЫ -->
+
+<section id="interests">
+    <div class="container reveal">
+        <p class="label">02 — MY WORLD</p>
+        <h2>Мои <span class="gradient">интересы</span> ♡</h2>
+
+        <div class="grid">
+            <article class="card">
+                <div class="icon">🎧</div>
+                <h3>Музыка</h3>
+                <p>У меня довольно необычный музыкальный вкус. Я не могу назвать себя меломаном, который слушает всё подряд, — скорее, тщательно выбираю то, что отзывается в душе. В моем плейлисте можно найти треки на самых разных языках: английском, русском, корейском и кыргызском.</p>
+            </article>
+
+            <article class="card">
+                <div class="icon">🎬</div>
+                <h3>Кино</h3>
+                <p>Мои кинопредпочтения охватывают самые разные жанры: от детективов и боевиков до трогательной романтики. Я с удовольствием смотрю и азиатские дорамы, и голливудские сериалы, и, конечно же, кыргызские фильмы, которые сейчас радуют классными проектами. Из недавнего — пересмотрела всю франшизу «Человека-паука».</p>
+            </article>
+            <article class="card">
+                <div class="icon">🎨</div>
+                <h3>Искусство</h3>
+                <p>С ранних лет я увлекалась рисованием и проводила за этим много времени. Сейчас свободного времени на творчество совсем мало, но любовь к искусству со мной навсегда.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- КОНТАКТЫ -->
+
+<section id="contacts">
+    <div class="container reveal">
+        <div class="contacts">
+            <p class="label">06 — CONTACTS</p>
+            <h2>Связаться <span class="gradient">со мной</span></h2>
+            <p class="description">Мой телеграмм</p>
+
+            <a href="https://t.me/xsseam" class="button">
+                Telegram ↗
+            </a>
+        </div>
+    </div>
+</section>
+</main>
+
+<footer>
+    <p>© 2026 Асема · Made with ♡</p>
+    <a href="#home">↑ Наверх</a>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll(".reveal").forEach(element => {
+    observer.observe(element);
+});
+</script>
+
+</body>
+</html>
